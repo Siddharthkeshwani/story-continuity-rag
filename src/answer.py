@@ -25,6 +25,11 @@ PROMPT = ChatPromptTemplate.from_messages([
     ("human", "Campaign {campaign}, through episode {cutoff}.\nQUESTION\n{question}\nPASSAGES\n{passages}")
 ])
 
+FALLBACK_MODELS = [
+    "openai/gpt-oss-120b",
+    "openai/gpt-oss-20b",
+]
+
 
 class Part(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -39,10 +44,13 @@ class Answer(BaseModel):
     parts: list[Part] = Field(min_length=1)
 
 
-@lru_cache(maxsize=2)
-def chat():
-    return ChatOpenAI(**chat_settings(), temperature=0, timeout=90, max_retries=0,
-                      max_tokens=3200, reasoning_effort="low", use_responses_api=False)
+@lru_cache(maxsize=4)
+def chat(model_name=None):
+    settings = chat_settings()
+    if model_name:
+        settings["model"] = model_name
+    return ChatOpenAI(**settings, temperature=0, timeout=90, max_retries=0,
+                      max_tokens=1024, reasoning_effort="low", use_responses_api=False)
 
 
 def invoke(chain, args):
@@ -87,23 +95,37 @@ def generate(question, passages, campaign, cutoff, language):
     schema["properties"]["parts"].pop("minItems", None)
     schema["$defs"]["Part"]["properties"]["claim"].pop("minLength", None)
     schema["$defs"]["Part"]["properties"]["evidence_ids"]["items"]["enum"] = sorted(allowed)
-    chain = PROMPT | chat().bind(response_format={"type": "json_schema", "json_schema": {
-        "name": "continuity_answer", "strict": True, "schema": schema}})
+    schema_format = {"type": "json_schema", "json_schema": {
+        "name": "continuity_answer", "strict": True, "schema": schema}}
+    primary = chat_settings()["model"]
+    models_to_try = [primary] + [m for m in FALLBACK_MODELS if m != primary]
     network_retries = 0
     for attempt in range(2):
-        msg, retries = invoke(chain, args)
-        network_retries += retries
+        msg, last_err = None, None
+        for model_name in models_to_try:
+            chain = PROMPT | chat(model_name).bind(response_format=schema_format)
+            try:
+                msg, retries = invoke(chain, args)
+                network_retries += retries
+                break
+            except Exception as err:
+                if getattr(err, "status_code", None) == 429:
+                    last_err = err
+                    continue
+                raise
+        if msg is None:
+            raise last_err
         for k in usage:
             usage[k] += (msg.usage_metadata or {}).get(k, 0)
         try:
             answer = Answer.model_validate_json(msg.content)
         except (ValidationError, TypeError):
             if attempt:
-                message = {"Hindi":"इन अंशों से स्रोत सहित उत्तर की पुष्टि नहीं हो सकी।",
-                           "Hinglish":"In passages se cited jawaab verify nahi hua."}.get(
+                message = {"Hindi": "इन अंशों से स्रोत सहित उत्तर की पुष्टि नहीं हो सकी।",
+                           "Hinglish": "In passages se cited jawaab verify nahi hua."}.get(
                                language, "A cited answer could not be validated from these passages.")
                 return dict(parts=[dict(status="unresolved", claim=message, evidence_ids=[], support_quotes=[])],
-                            retries=attempt+network_retries, invalid_citations=1, **usage)
+                            retries=attempt + network_retries, invalid_citations=1, **usage)
             args["question"] += "\nReturn a JSON object with at least one part, even if the evidence is insufficient."
             continue
         invalid = [p for p in answer.parts if (p.status != "unresolved" and not p.evidence_ids)
@@ -125,6 +147,5 @@ def generate(question, passages, campaign, cutoff, language):
                     "Hindi": f"अभियान {campaign} के एपिसोड {cutoff} तक मिले संवाद से इस भाग की पुष्टि नहीं होती।",
                     "Hinglish": f"Campaign {campaign}, episode {cutoff} tak mile dialogue se is baat ki pushti nahi hoti.",
                 }.get(language, f"The retrieved dialogue through Campaign {campaign}, episode {cutoff} does not establish this part.")
-        return dict(parts=answer.model_dump()["parts"], retries=attempt+network_retries,
+        return dict(parts=answer.model_dump()["parts"], retries=attempt + network_retries,
                     invalid_citations=len(invalid), **usage)
-
