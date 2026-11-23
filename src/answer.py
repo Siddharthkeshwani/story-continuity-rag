@@ -40,7 +40,7 @@ class Answer(BaseModel):
 @lru_cache(maxsize=2)
 def chat():
     return ChatOpenAI(**chat_settings(), temperature=0, timeout=90, max_retries=0,
-                      max_tokens=3200, use_responses_api=False)
+                      max_tokens=3200, reasoning_effort="low", use_responses_api=False)
 
 
 def invoke(chain, args):
@@ -48,7 +48,8 @@ def invoke(chain, args):
         try:
             return chain.invoke(args), attempt
         except Exception as err:
-            if getattr(err, "status_code", None) != 429 or attempt == 3:
+            status = getattr(err, "status_code", None)
+            if status not in (429, 503) or attempt == 3 or (status == 503 and attempt >= 1):
                 raise
             headers = getattr(getattr(err, "response", None), "headers", {})
             try:

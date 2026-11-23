@@ -69,6 +69,31 @@ class Integrity(unittest.TestCase):
         self.assertEqual(result["prompt_ids"], [])
         self.assertEqual(result["answer"]["parts"][0]["status"], "unresolved")
 
+    def test_valid_id_with_invented_quote_is_rejected(self):
+        from langchain_core.runnables import RunnableLambda
+        fake = SimpleNamespace(content=json.dumps({"parts":[{"claim":"Unsupported detail","status":"established",
+                               "evidence_ids":["F001"],"support_quotes":["This invented supporting line is absent."]}]}),
+                               usage_metadata={})
+        with patch("src.answer.chat",return_value=SimpleNamespace(bind=lambda **kw:RunnableLambda(lambda _:fake))):
+            result = generate("What happened?",[self.tables["chunks"]["F001"]],1,1,"English")
+        self.assertEqual(result["parts"][0]["status"], "unresolved")
+        self.assertEqual(result["parts"][0]["support_quotes"], [])
+
+    def test_service_outage_is_separate_from_low_relevance(self):
+        with patch("src.answer.generate") as model:
+            for score in (-1, 1):
+                candidates = [{"id":"F001","score":score}]
+                ranking = dict(initial=candidates, final=candidates, retrieval_ms=1, rerank_ms=1)
+                with patch("src.retrieve.retrieve",return_value=ranking):
+                    result = check_story("Test", "v4", 1, 1, self.meta["fingerprint"], generation_paused=True)
+                self.assertEqual(result["prompt_ids"], [])
+                if score < 0:
+                    self.assertEqual(result["answer"]["parts"][0]["status"], "unresolved")
+                else:
+                    self.assertEqual(result["generation_skipped"], "ProviderCooldown")
+                    self.assertNotIn("answer", result)
+            model.assert_not_called()
+
     def test_rate_limit_retry(self):
         from src.answer import invoke
         from unittest.mock import Mock

@@ -82,18 +82,22 @@ def retrieve(question, version, campaign, cutoff, revision):
 
 
 @traceable(name="Check story")
-def check_story(question, version, campaign, cutoff, revision, language="English", evidence_only=False):
+def check_story(question, version, campaign, cutoff, revision, language="English", evidence_only=False,
+                generation_paused=False):
     result = retrieve(question, version, campaign, cutoff, revision)
     rows = corpus(revision)["chunks"]
     evidence = [rows[c["id"]] for c in result["final"]]
     weak = bool(version == "v4" and evidence and result["final"][0]["score"] < MIN_RERANK_SCORE)
     result["guardrail"] = "low_relevance" if weak else ""
-    result["prompt_ids"] = [] if evidence_only or weak else [p["chunk_id"] for p in evidence]
+    result["prompt_ids"] = [] if evidence_only or weak or generation_paused else [p["chunk_id"] for p in evidence]
     if weak and not evidence_only:
         message = {"Hindi": "पर्याप्त प्रमाण नहीं मिला।", "Hinglish": "Is sawaal ke liye paryaapt saboot nahi mila."}.get(
             language, "Insufficient evidence. The retrieved dialogue does not closely match this question.")
         result["answer"] = dict(parts=[dict(claim=message, status="unresolved", evidence_ids=[], support_quotes=[])],
                                 retries=0, input_tokens=0, output_tokens=0)
+        return result
+    if generation_paused and evidence and not evidence_only:
+        result["generation_skipped"] = "ProviderCooldown"
         return result
     if not evidence_only and evidence:
         from .answer import generate

@@ -17,37 +17,38 @@ def flatten(run, depth=0):
     return [fields] + [row for child in run.child_runs or [] for row in flatten(child, depth+1)]
 
 
-def record(client, label, question, cutoff):
+def record(client, label, question, cutoff, campaign=1, evidence_only=False):
     run_id = uuid4()
     try:
-        result = check_story(question, "v4", 1, cutoff, manifest()["fingerprint"],
+        result = check_story(question, "v4", campaign, cutoff, manifest()["fingerprint"], evidence_only=evidence_only,
                              langsmith_extra={"run_id":run_id})
-    except ValueError:
-        if label != "Controlled error":
+    except Exception as err:
+        if not (label == "Controlled error" and isinstance(err, ValueError)) and not getattr(err,"retrieval_result",None):
             raise
-        result = {}
+        result = dict(getattr(err, "retrieval_result", {}), failure=type(err).__name__, http_status=getattr(err,"status_code",None))
     from langchain_core.tracers.langchain import wait_for_all_tracers
     wait_for_all_tracers()
     client.flush()
     for _ in range(12):
         try:
             run = client.read_run(run_id, load_child_runs=True)
-            if run.end_time and (label=="Controlled error" or result.get("guardrail") or any(x["type"]=="llm" for x in flatten(run))):
+            if run.end_time and (run.error or evidence_only or result.get("guardrail") or any(x["type"]=="llm" for x in flatten(run))):
                 break
         except Exception:
             pass
         sleep(2)
     else:
         raise RuntimeError("The completed trace could not be read back")
-    return dict(label=label, question=question, cutoff=cutoff, run_id=str(run_id),
+    return dict(label=label, question=question, campaign=campaign, cutoff=cutoff, run_id=str(run_id),
                 url=client.get_run_url(run=run), stages=flatten(run), result=result)
 
 
 def main():
     client = Client()
-    records = [record(client,"Answerable",QUESTION,1),
-               record(client,"Early cutoff","How much gold did the group recover after the treasure chest exploded?",1),
-               record(client,"Controlled error"," ",1)]
+    records = [record(client,"Campaign 2 source search","Which small town borders the Ustaloch in the opening narration?",1,2,True),
+               record(client,"Early cutoff","What did the Mighty Nein rename the damaged Squalleater?",1,2),
+               record(client,"Controlled error"," ",1),
+               record(client,"Answerable question",QUESTION,1)]
     out = ROOT/"results"
     (out/"diagnostics.json").write_text(json.dumps(records, ensure_ascii=False, indent=2), encoding="utf8")
     sections = []

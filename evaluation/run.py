@@ -37,21 +37,30 @@ def matches(passage, span, campaign):
             and passage["turn_end"] >= ends[-1])
 
 
-def benchmark(cases_path, versions, out, evidence_only=False):
+def benchmark(cases_path, versions, out, evidence_only=False, resume=False):
     cases = read_csv(cases_path)
     model_id = "evidence-only" if evidence_only else chat_settings()["model"]
     meta = manifest()
     rev = meta["fingerprint"]
     chunks = corpus(rev)["chunks"]
-    rows = []
     traces_on = os.getenv("LANGSMITH_TRACING", "").lower() == "true"
     digest = sha(cases_path)
+    rows = read_csv(out) if resume and out.exists() else []
+    if any((r["corpus"],r["cases_sha256"],r["chat_model"],r["prompt_version"]) !=
+           (rev,digest,model_id,PROMPT_VERSION) for r in rows):
+        raise ValueError("The saved run used a different corpus, case set, model or prompt.")
+    recorded = {(r["version"],r["question_id"]):i for i,r in enumerate(rows)}
+    outage_failures = 0
+    next_probe = 0.0
     for version in versions:
         start = perf_counter()
         # Load search components with an independent warmup question.
         retrieve("Which passages describe Kraghammer?", version, 1, 1, rev)
         cold_ms = round((perf_counter()-start)*1000, 1)
         for case in cases:
+            previous = recorded.get((version,case["question_id"]))
+            if previous is not None and not rows[previous]["error"]:
+                continue
             if rows and not evidence_only:
                 sleep(7)
             run_id = str(uuid4())
@@ -66,8 +75,12 @@ def benchmark(cases_path, versions, out, evidence_only=False):
             start = perf_counter()
             try:
                 result = check_story(case["question"], version, campaign, cutoff, rev, case["language"], evidence_only,
+                                     generation_paused=bool(next_probe and perf_counter() < next_probe),
                                      langsmith_extra={"run_id": run_id})
                 answer = result.get("answer", {})
+                row["error"] = result.get("generation_skipped","")
+                if answer and not result.get("guardrail"):
+                    outage_failures, next_probe = 0, 0.0
                 row["guardrail"] = result.get("guardrail", "")
                 parts = answer.get("parts", [])
                 cited = [cid for p in parts for cid in p["evidence_ids"]]
@@ -82,7 +95,12 @@ def benchmark(cases_path, versions, out, evidence_only=False):
                 forbidden = case["forbidden_future_fact"].casefold()
                 row["future_text_flag"] = int(bool(forbidden and forbidden in " ".join(p["claim"] for p in parts).casefold()))
             except Exception as err:
-                row["error"] = type(err).__name__ + " " + str(getattr(err, "code", "") or "")
+                status = getattr(err, "status_code", None)
+                row["error"] = (type(err).__name__ + " " + str(status or getattr(err, "code", "") or "")).strip()
+                if status in (429, 503) or "Timeout" in type(err).__name__:
+                    outage_failures += 1
+                    if outage_failures >= 3:
+                        next_probe = perf_counter() + 120
                 retrieved = getattr(err, "retrieval_result", {})
                 for key in ("initial", "final", "prompt_ids"):
                     row[key] = json.dumps(retrieved.get(key, []))
@@ -101,7 +119,10 @@ def benchmark(cases_path, versions, out, evidence_only=False):
             row["elapsed_ms"] = round((perf_counter()-start)*1000,2)
             identity = [rev, digest, model_id, PROMPT_VERSION, version, case["question_id"], row["response"], row["final"]]
             row["review_key"] = hashlib.sha256(json.dumps(identity).encode()).hexdigest()
-            rows.append(row)
+            if previous is None:
+                rows.append(row)
+            else:
+                rows[previous] = row
             write_csv(out, rows)
             print(version, case["question_id"], row["elapsed_ms"], row["error"][:100], flush=True)
     return rows
@@ -132,7 +153,9 @@ def summarize(path):
             rerank_median_ms=round(float(np.median([float(r["rerank_ms"]) for r in group if r["rerank_ms"]] or [0])),1),
             warmup_ms=group[0]["warmup_ms"], input_tokens=sum(int(r["input_tokens"]) for r in group),
             output_tokens=sum(int(r["output_tokens"]) for r in group), retries=sum(int(r["retries"]) for r in group),
-            failures=sum(bool(r["error"]) for r in group)))
+            failures=sum(bool(r["error"]) for r in group),
+            provider_cooldown_skips=sum(r["error"]=="ProviderCooldown" for r in group),
+            relevance_abstentions=sum(bool(r.get("guardrail")) and not r["error"] for r in group)))
     target = path.with_name("comparison.csv" if path.stem=="runs" else path.stem+"_comparison.csv")
     write_csv(target, summaries)
     print(target)
@@ -145,11 +168,12 @@ if __name__ == "__main__":
     p.add_argument("--summarize", type=Path)
     p.add_argument("--output", type=Path)
     p.add_argument("--evidence-only", action="store_true")
+    p.add_argument("--resume", action="store_true", help="Keep completed answers and retry missing or failed cases.")
     a = p.parse_args()
     if a.summarize:
         summarize(a.summarize)
     else:
         path = a.output or RESULTS / ("runs.csv" if a.cases.stem=="test" else a.cases.stem+"_runs.csv")
-        benchmark(a.cases, a.versions, path, a.evidence_only)
+        benchmark(a.cases, a.versions, path, a.evidence_only, a.resume)
         summarize(path)
 

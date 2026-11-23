@@ -97,7 +97,7 @@ def ensure_assets():
         if not archive.exists():
             dataset = os.getenv("HF_DATASET_REPO") or DATASET_REPO
             archive = Path(hf_hub_download(repo_id=dataset, repo_type="dataset", filename=ARCHIVE,
-                                          revision=os.getenv("HF_DATASET_REVISION") or "main"))
+                                          revision=os.getenv("HF_DATASET_REVISION") or spec.get("dataset_revision") or "main"))
         restore(archive, spec)
 
 

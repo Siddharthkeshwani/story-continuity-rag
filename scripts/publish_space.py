@@ -11,12 +11,13 @@ ROOT = Path(__file__).resolve().parents[1]
 load_dotenv(ROOT / ".env")
 
 
-def publish(dataset, space):
+def publish(dataset, space=None):
     api = HfApi()
     api.whoami()
-    for key in ("GEMINI_API_KEY", "LANGSMITH_API_KEY"):
-        if not os.getenv(key):
-            raise RuntimeError(f"Missing {key} for the Space")
+    if space:
+        for key in ("GEMINI_API_KEY", "LANGSMITH_API_KEY"):
+            if not os.getenv(key):
+                raise RuntimeError(f"Missing {key} for the Space")
     spec = json.loads((ROOT/"deployment/release.json").read_text())
     archive = ROOT/spec["filename"]
     with archive.open("rb") as f:
@@ -28,6 +29,11 @@ def publish(dataset, space):
         operations=[CommitOperationAdd(path_in_repo=archive.name, path_or_fileobj=str(archive)),
                     CommitOperationAdd(path_in_repo="README.md",path_or_fileobj=card.encode()),
                     CommitOperationAdd(path_in_repo="data/CRD3-LICENSE",path_or_fileobj=str(ROOT/"data/CRD3-LICENSE"))])
+    print(f"https://huggingface.co/datasets/{dataset} at {result.oid}", flush=True)
+    spec["dataset_revision"] = result.oid
+    (ROOT/"deployment/release.json").write_text(json.dumps(spec, indent=2)+"\n", encoding="utf8")
+    if space is None:
+        return
     api.create_repo(space, repo_type="space", space_sdk="docker", exist_ok=True)
     for key in ("GEMINI_API_KEY", "LANGSMITH_API_KEY"):
         api.add_space_secret(space, key, os.environ[key])
@@ -47,7 +53,7 @@ def publish(dataset, space):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--dataset", required=True)
-    parser.add_argument("--space", required=True)
+    parser.add_argument("--space", help="Also deploy the Streamlit Docker Space.")
     args = parser.parse_args()
     publish(args.dataset, args.space)
 

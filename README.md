@@ -62,10 +62,12 @@ python -m unittest evaluation.test_integrity
 python -m evaluation.run --cases evaluation/test.csv --versions v2 v3 v4
 ```
 
-The evaluator pauses seven seconds between hosted questions and records bounded retries for HTTP 429. The hosted command checks credentials before writing the answer run. The separate evidence-only result measures retrieval with 34 held-out questions. Historical answers using Qwen are under `results/qwen-baseline/`. [Current findings](results/findings.md) · [Search comparison](results/retrieval_comparison.csv) · [Presentation](presentation/Story_Continuity.pptx)
+The evaluator pauses seven seconds between hosted questions and records bounded retries for HTTP 429. After repeated provider failures, the evaluator keeps checking the sources and periodically probes the provider. Rows marked `ProviderCooldown` were skipped during that pause. Use `--resume` to retry unfinished answers with the same corpus, cases and model. The separate evidence-only result measures retrieval with 34 held-out questions. Historical answers using Qwen are under `results/qwen-baseline/`. [Current findings](results/findings.md) · [Search comparison](results/retrieval_comparison.csv) · [Presentation](presentation/Story_Continuity.pptx)
 
-## Hugging Face deployment
+## Cloud deployment
 
-The Space uses the Docker SDK, Streamlit on port 7860 and the default free CPU hardware. The release package includes both backends, the shared vectors, ordered IDs, processed turns and chunks, release metadata and the original data licence. The same package serves both the app and CLI. The release checksum is verified before the app opens either index.
+The public Hugging Face Dataset holds the 378 MB archive. The runtime can use Streamlit Community Cloud or a Hugging Face Docker Space. Hugging Face returned HTTP 402 when this account attempted to create a CPU Basic Docker Space. [Published Dataset](https://huggingface.co/datasets/Siddharth156/story-continuity-index) The release package includes both backends, the shared vectors, ordered IDs, processed turns and chunks, release metadata and the original data licence. The same package serves both the app and CLI. The release checksum is verified before the app opens either index.
 
 `scripts/publish_space.py --dataset OWNER/DATASET --space OWNER/SPACE`, executed with Python, publishes the verified archive, sets the Dataset revision and the model, adds provider credentials through Space Secrets and uploads an allowlist of app files. Publishing requires a Hugging Face write login or `HF_TOKEN`. Deployment uses the project's Dockerfile. [Hugging Face Streamlit hosting](https://huggingface.co/docs/hub/spaces-sdks-streamlit)
+
+Streamlit Community Cloud uses the GitHub repository’s `main` branch, `app.py` and Python 3.11. Store the Gemini and LangSmith settings in the app’s Secrets panel. The public archive downloads at the revision recorded in the release file. [Community Cloud secrets](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management)
