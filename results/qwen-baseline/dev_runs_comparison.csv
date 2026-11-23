@@ -1,0 +1,4 @@
+version,cases,reviewed,accuracy,hit5,complete_multi,citation_support,source_leaks,text_leaks,warm_median_ms,warm_p95_ms,retrieval_median_ms,rerank_median_ms,warmup_ms,input_tokens,output_tokens,retries,failures
+v2,10,10,6/10,8/9 (89%),1/2 (50%),10/11,0,0,2893.1,4909.9,19.2,0.0,9472.8,21288,1280,5,0
+v3,10,10,6/10,8/9 (89%),1/2 (50%),10/11,0,0,2232.1,3887.2,34.1,0.0,600.3,21288,1280,5,0
+v4,10,10,5/10,8/9 (89%),1/2 (50%),9/12,0,0,5120.0,6511.4,64.8,2248.6,6865.4,18045,812,3,0

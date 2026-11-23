@@ -1,0 +1,14 @@
+.env
+.venv/
+.models/
+__pycache__/
+data/raw/
+indexes/
+data/processed/
+data/processed_campaign1/
+data/bundle/
+crd3_index_v1.zip
+.streamlit/secrets.toml
+.build/
+*.log
+

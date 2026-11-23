@@ -1,0 +1,4 @@
+question_id,version,review_key,correct,supported_claims,factual_claims,text_leak,note
+S01,v4,d7063a22ae2ad531b2b9e630d7fd335abf1b99f99f19367613a798078cd66628,0,0,1,0,Earlier dialogue establishes Thordak's rule but cannot establish what the specifically requested episode 50 recap said.
+S02,v4,2850b431521b9c0ede8c744b95c560b89c31f90ea6c262efdc1a2450b10316ea,0,0,1,0,"Correct name, but the cited passages from episode 98 do not name the Myriad or document the episode 100 recap."
+S03,v4,bd67d1e2bf0b7dc797b0faa32fa4ab6f9627b41d36393ad4f579201440cfc717,0,0,0,0,The episode 115 source reached the final five; the answer omitted the Hand of Vecna.

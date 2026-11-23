@@ -1,0 +1,298 @@
+{
+  "v1_smoke": "{\"parts\":[{\"claim\":\"Arcanist Allura Vysoren asked Vox Machina to help find Lady Kima.\",\"status\":\"established\",\"evidence_ids\":[\"C1E001:T0051\"]},{\"claim\":\"Arcanist Allura Vysoren and Lady Kima are friends.\",\"status\":\"established\",\"evidence_ids\":[\"C1E001:T0051\"]}]}",
+  "v1": {
+    "parts": [
+      {
+        "claim": "Arcanist Allura Vysoren asked Vox Machina to help find Lady Kima.",
+        "status": "established",
+        "evidence_ids": [
+          "C1E001:T0051"
+        ]
+      },
+      {
+        "claim": "Arcanist Allura Vysoren and Lady Kima are friends.",
+        "status": "established",
+        "evidence_ids": [
+          "C1E001:T0051"
+        ]
+      }
+    ],
+    "retries": 0,
+    "invalid_citations": 0,
+    "input_tokens": 759,
+    "output_tokens": 87
+  },
+  "unrelated": {
+    "parts": [
+      {
+        "claim": "This part lacks a valid supporting citation.",
+        "status": "unresolved",
+        "evidence_ids": []
+      }
+    ],
+    "retries": 1,
+    "invalid_citations": 1,
+    "input_tokens": 800,
+    "output_tokens": 82
+  },
+  "reveal_question": "What was the light Grog charged toward before the duergar ambush?",
+  "early": {
+    "initial": [
+      {
+        "id": "C1E001:P0237",
+        "score": 0.8247224688529968
+      },
+      {
+        "id": "C1E001:P0028",
+        "score": 0.8174569010734558
+      },
+      {
+        "id": "C1E001:P0204",
+        "score": 0.8173784017562866
+      },
+      {
+        "id": "C1E001:P0121",
+        "score": 0.8127778172492981
+      },
+      {
+        "id": "C1E001:P0264",
+        "score": 0.8122850656509399
+      },
+      {
+        "id": "C1E001:P0267",
+        "score": 0.811519980430603
+      },
+      {
+        "id": "C1E001:P0003",
+        "score": 0.8112297058105469
+      },
+      {
+        "id": "C1E001:P0032",
+        "score": 0.8108170032501221
+      },
+      {
+        "id": "C1E001:P0150",
+        "score": 0.8100889921188354
+      },
+      {
+        "id": "C1E001:P0242",
+        "score": 0.8079085350036621
+      },
+      {
+        "id": "C1E001:P0257",
+        "score": 0.8077426552772522
+      },
+      {
+        "id": "C1E001:P0151",
+        "score": 0.807075560092926
+      },
+      {
+        "id": "F002",
+        "score": 0.8060013055801392
+      },
+      {
+        "id": "C1E001:P0031",
+        "score": 0.8054887652397156
+      },
+      {
+        "id": "C1E001:P0222",
+        "score": 0.8050621747970581
+      },
+      {
+        "id": "C1E001:P0122",
+        "score": 0.8046926259994507
+      },
+      {
+        "id": "C1E001:P0239",
+        "score": 0.8041556477546692
+      },
+      {
+        "id": "C1E001:P0004",
+        "score": 0.8040632009506226
+      },
+      {
+        "id": "C1E001:P0138",
+        "score": 0.8037769198417664
+      },
+      {
+        "id": "C1E001:P0255",
+        "score": 0.8035413026809692
+      }
+    ],
+    "final": [
+      {
+        "id": "C1E001:P0028",
+        "score": -2.1975276470184326
+      },
+      {
+        "id": "C1E001:P0150",
+        "score": -3.3381245136260986
+      },
+      {
+        "id": "C1E001:P0003",
+        "score": -3.351456880569458
+      },
+      {
+        "id": "C1E001:P0237",
+        "score": -4.039248943328857
+      },
+      {
+        "id": "C1E001:P0239",
+        "score": -4.083480358123779
+      }
+    ],
+    "retrieval_ms": 22409.94,
+    "rerank_ms": 7663.08,
+    "prompt_ids": [
+      "C1E001:P0028",
+      "C1E001:P0150",
+      "C1E001:P0003",
+      "C1E001:P0237",
+      "C1E001:P0239"
+    ],
+    "answer": {
+      "parts": [
+        {
+          "claim": "This part lacks a valid supporting citation.",
+          "status": "unresolved",
+          "evidence_ids": []
+        }
+      ],
+      "retries": 1,
+      "invalid_citations": 1,
+      "input_tokens": 2874,
+      "output_tokens": 133
+    }
+  },
+  "later": {
+    "initial": [
+      {
+        "id": "C1E003:P0008",
+        "score": 0.8670719861984253
+      },
+      {
+        "id": "C1E003:P0007",
+        "score": 0.8310062885284424
+      },
+      {
+        "id": "C1E003:P0177",
+        "score": 0.8283386826515198
+      },
+      {
+        "id": "C1E003:P0120",
+        "score": 0.8283229470252991
+      },
+      {
+        "id": "C1E003:P0096",
+        "score": 0.8274886608123779
+      },
+      {
+        "id": "C1E003:P0044",
+        "score": 0.8257423639297485
+      },
+      {
+        "id": "C1E001:P0237",
+        "score": 0.8247224688529968
+      },
+      {
+        "id": "C1E003:P0009",
+        "score": 0.8245005011558533
+      },
+      {
+        "id": "C1E002:P0273",
+        "score": 0.8241206407546997
+      },
+      {
+        "id": "C1E002:P0249",
+        "score": 0.8230255842208862
+      },
+      {
+        "id": "C1E003:P0172",
+        "score": 0.8225792050361633
+      },
+      {
+        "id": "C1E003:P0001",
+        "score": 0.821556806564331
+      },
+      {
+        "id": "C1E002:P0137",
+        "score": 0.8215054869651794
+      },
+      {
+        "id": "C1E002:P0001",
+        "score": 0.8214314579963684
+      },
+      {
+        "id": "C1E003:P0247",
+        "score": 0.8210752010345459
+      },
+      {
+        "id": "C1E003:P0055",
+        "score": 0.8209344148635864
+      },
+      {
+        "id": "C1E003:P0178",
+        "score": 0.820571780204773
+      },
+      {
+        "id": "C1E002:P0200",
+        "score": 0.81879723072052
+      },
+      {
+        "id": "C1E002:P0147",
+        "score": 0.8177350163459778
+      },
+      {
+        "id": "C1E001:P0028",
+        "score": 0.8174569010734558
+      }
+    ],
+    "final": [
+      {
+        "id": "C1E003:P0008",
+        "score": 5.605583667755127
+      },
+      {
+        "id": "C1E003:P0007",
+        "score": 4.3006086349487305
+      },
+      {
+        "id": "C1E001:P0028",
+        "score": -2.1975247859954834
+      },
+      {
+        "id": "C1E002:P0249",
+        "score": -2.766777753829956
+      },
+      {
+        "id": "C1E003:P0001",
+        "score": -2.794650077819824
+      }
+    ],
+    "retrieval_ms": 61.72,
+    "rerank_ms": 2138.25,
+    "prompt_ids": [
+      "C1E003:P0008",
+      "C1E003:P0007",
+      "C1E001:P0028",
+      "C1E002:P0249",
+      "C1E003:P0001"
+    ],
+    "answer": {
+      "parts": [
+        {
+          "claim": "The light Grog charged toward was a campfire across the way.",
+          "status": "established",
+          "evidence_ids": [
+            "C1E003:P0008",
+            "C1E003:P0007"
+          ]
+        }
+      ],
+      "retries": 0,
+      "invalid_citations": 0,
+      "input_tokens": 1449,
+      "output_tokens": 54
+    }
+  }
+}

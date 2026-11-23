@@ -1,0 +1,15 @@
+.git
+.env
+.venv
+.build
+.models
+.streamlit/secrets.toml
+indexes
+data/raw
+data/processed*
+data/bundle
+*.zip
+**/__pycache__
+results
+presentation
+

@@ -1,0 +1,6 @@
+fact_id,subject,fact_text,campaign_id,episode_no,source_turn_start,source_turn_end
+F001,Allura Vysoren,"Matt says Arcanist Allura Vysoren asked the party to find Lady Kima of Vord. Allura and Kima were longtime friends.",1,1,51,51
+F002,Grog Strongjaw,"Grog's uncle Kevdak banished him from the herd. Pike healed Grog and the two remained close friends.",1,1,3,3
+F003,Vex'ahlia,"Vex'ahlia and Vax'ildan are twins. Their father was an ambassador in Syngorn. Vex's bear companion was Trinket.",1,1,10,10
+F004,Lady Kima,"Matt recounts that the group found Lady Kima in a torture chamber beneath Emberhold. Kima and Clarota had formed a tense alliance.",1,7,23,23
+

@@ -1,0 +1,2 @@
+version,cases,reviewed,accuracy,hit5,complete_multi,citation_support,source_leaks,text_leaks,warm_median_ms,warm_p95_ms,retrieval_median_ms,rerank_median_ms,warmup_ms,input_tokens,output_tokens,retries,failures
+v4,3,3,0/3,2/3 (67%),n/a,0/2,0,0,7558.9,9107.6,444.4,2143.8,26846.5,6035,253,1,0

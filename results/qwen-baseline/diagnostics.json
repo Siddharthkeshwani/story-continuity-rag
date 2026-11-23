@@ -1,0 +1,439 @@
+[
+  {
+    "label": "Answerable",
+    "question": "Who asked Vox Machina to help find Lady Kima, and what was their relationship?",
+    "cutoff": 1,
+    "run_id": "bd0ba26a-e49b-44bc-b1e5-c57b2132f8b2",
+    "url": "https://smith.langchain.com/o/98abc327-28d4-45f2-bfae-9d1411fb60d6/projects/p/a2ecd954-e481-404a-8730-7ddb35e4b599/r/bd0ba26a-e49b-44bc-b1e5-c57b2132f8b2?poll=true",
+    "stages": [
+      {
+        "name": "Check story",
+        "depth": 0,
+        "type": "chain",
+        "duration_ms": 24381,
+        "error": false,
+        "tokens": 1349
+      },
+      {
+        "name": "Eligible passage search",
+        "depth": 1,
+        "type": "retriever",
+        "duration_ms": 13988,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Rerank candidate passages",
+        "depth": 1,
+        "type": "chain",
+        "duration_ms": 8259,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Generate and validate cited claims",
+        "depth": 1,
+        "type": "chain",
+        "duration_ms": 2058,
+        "error": false,
+        "tokens": 1349
+      },
+      {
+        "name": "RunnableSequence",
+        "depth": 2,
+        "type": "chain",
+        "duration_ms": 1975,
+        "error": false,
+        "tokens": 1349
+      },
+      {
+        "name": "ChatPromptTemplate",
+        "depth": 3,
+        "type": "prompt",
+        "duration_ms": 1,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "ChatOpenAI",
+        "depth": 3,
+        "type": "llm",
+        "duration_ms": 1969,
+        "error": false,
+        "tokens": 1349
+      }
+    ],
+    "result": {
+      "initial": [
+        {
+          "id": "F001",
+          "score": 0.8838533163070679
+        },
+        {
+          "id": "C1E001:P0028",
+          "score": 0.8283171057701111
+        },
+        {
+          "id": "C1E001:P0027",
+          "score": 0.8254780173301697
+        },
+        {
+          "id": "C1E001:P0063",
+          "score": 0.8218138217926025
+        },
+        {
+          "id": "C1E001:P0212",
+          "score": 0.8153020739555359
+        },
+        {
+          "id": "C1E001:P0264",
+          "score": 0.8134503364562988
+        },
+        {
+          "id": "C1E001:P0016",
+          "score": 0.8122606873512268
+        },
+        {
+          "id": "C1E001:P0163",
+          "score": 0.8122606873512268
+        },
+        {
+          "id": "C1E001:P0204",
+          "score": 0.8109967708587646
+        },
+        {
+          "id": "C1E001:P0106",
+          "score": 0.8102523684501648
+        },
+        {
+          "id": "C1E001:P0211",
+          "score": 0.8099411725997925
+        },
+        {
+          "id": "C1E001:P0241",
+          "score": 0.8096717000007629
+        },
+        {
+          "id": "C1E001:P0216",
+          "score": 0.8096581697463989
+        },
+        {
+          "id": "C1E001:P0076",
+          "score": 0.8093242645263672
+        },
+        {
+          "id": "C1E001:P0078",
+          "score": 0.8086572885513306
+        },
+        {
+          "id": "C1E001:P0084",
+          "score": 0.8079068064689636
+        },
+        {
+          "id": "C1E001:P0121",
+          "score": 0.8078645467758179
+        },
+        {
+          "id": "C1E001:P0073",
+          "score": 0.8076459169387817
+        },
+        {
+          "id": "C1E001:P0071",
+          "score": 0.8068900108337402
+        },
+        {
+          "id": "C1E001:P0067",
+          "score": 0.80672687292099
+        }
+      ],
+      "final": [
+        {
+          "id": "F001",
+          "score": 4.556101322174072
+        },
+        {
+          "id": "C1E001:P0028",
+          "score": -2.9297523498535156
+        },
+        {
+          "id": "C1E001:P0027",
+          "score": -3.1495320796966553
+        },
+        {
+          "id": "C1E001:P0063",
+          "score": -4.866697311401367
+        },
+        {
+          "id": "C1E001:P0016",
+          "score": -6.473630905151367
+        }
+      ],
+      "retrieval_ms": 13990.02,
+      "rerank_ms": 8260.97,
+      "prompt_ids": [
+        "F001",
+        "C1E001:P0028",
+        "C1E001:P0027",
+        "C1E001:P0063",
+        "C1E001:P0016"
+      ],
+      "answer": {
+        "parts": [
+          {
+            "claim": "Arcanist Allura Vysoren asked Vox Machina to help find Lady Kima.",
+            "status": "established",
+            "evidence_ids": [
+              "F001"
+            ]
+          },
+          {
+            "claim": "Allura and Kima were longtime friends.",
+            "status": "established",
+            "evidence_ids": [
+              "F001"
+            ]
+          }
+        ],
+        "retries": 0,
+        "invalid_citations": 0,
+        "input_tokens": 1283,
+        "output_tokens": 66
+      }
+    }
+  },
+  {
+    "label": "Early cutoff",
+    "question": "How much gold did the group recover after the treasure chest exploded?",
+    "cutoff": 1,
+    "run_id": "3c773386-39d8-4425-925b-716f91e0d1f6",
+    "url": "https://smith.langchain.com/o/98abc327-28d4-45f2-bfae-9d1411fb60d6/projects/p/a2ecd954-e481-404a-8730-7ddb35e4b599/r/3c773386-39d8-4425-925b-716f91e0d1f6?poll=true",
+    "stages": [
+      {
+        "name": "Check story",
+        "depth": 0,
+        "type": "chain",
+        "duration_ms": 8122,
+        "error": false,
+        "tokens": 3103
+      },
+      {
+        "name": "Eligible passage search",
+        "depth": 1,
+        "type": "retriever",
+        "duration_ms": 65,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Rerank candidate passages",
+        "depth": 1,
+        "type": "chain",
+        "duration_ms": 3153,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Generate and validate cited claims",
+        "depth": 1,
+        "type": "chain",
+        "duration_ms": 4899,
+        "error": false,
+        "tokens": 3103
+      },
+      {
+        "name": "RunnableSequence",
+        "depth": 2,
+        "type": "chain",
+        "duration_ms": 2712,
+        "error": false,
+        "tokens": 1582
+      },
+      {
+        "name": "ChatPromptTemplate",
+        "depth": 3,
+        "type": "prompt",
+        "duration_ms": 2,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "ChatOpenAI",
+        "depth": 3,
+        "type": "llm",
+        "duration_ms": 2704,
+        "error": false,
+        "tokens": 1582
+      },
+      {
+        "name": "RunnableSequence",
+        "depth": 2,
+        "type": "chain",
+        "duration_ms": 2184,
+        "error": false,
+        "tokens": 1521
+      },
+      {
+        "name": "ChatPromptTemplate",
+        "depth": 3,
+        "type": "prompt",
+        "duration_ms": 1,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "ChatOpenAI",
+        "depth": 3,
+        "type": "llm",
+        "duration_ms": 2177,
+        "error": false,
+        "tokens": 1521
+      }
+    ],
+    "result": {
+      "initial": [
+        {
+          "id": "C1E001:P0046",
+          "score": 0.7963937520980835
+        },
+        {
+          "id": "C1E001:P0235",
+          "score": 0.7881691455841064
+        },
+        {
+          "id": "C1E001:P0079",
+          "score": 0.7877210974693298
+        },
+        {
+          "id": "C1E001:P0251",
+          "score": 0.7870290279388428
+        },
+        {
+          "id": "C1E001:P0250",
+          "score": 0.783687949180603
+        },
+        {
+          "id": "C1E001:P0047",
+          "score": 0.7836196422576904
+        },
+        {
+          "id": "C1E001:P0212",
+          "score": 0.7828491926193237
+        },
+        {
+          "id": "C1E001:P0185",
+          "score": 0.7822681665420532
+        },
+        {
+          "id": "C1E001:P0223",
+          "score": 0.7810031175613403
+        },
+        {
+          "id": "C1E001:P0081",
+          "score": 0.7805493474006653
+        },
+        {
+          "id": "C1E001:P0236",
+          "score": 0.7800585031509399
+        },
+        {
+          "id": "C1E001:P0260",
+          "score": 0.7800440192222595
+        },
+        {
+          "id": "C1E001:P0092",
+          "score": 0.7797685265541077
+        },
+        {
+          "id": "C1E001:P0164",
+          "score": 0.7795706987380981
+        },
+        {
+          "id": "C1E001:P0195",
+          "score": 0.7793018817901611
+        },
+        {
+          "id": "C1E001:P0055",
+          "score": 0.7792943716049194
+        },
+        {
+          "id": "C1E001:P0239",
+          "score": 0.7790319323539734
+        },
+        {
+          "id": "C1E001:P0241",
+          "score": 0.7786356210708618
+        },
+        {
+          "id": "C1E001:P0209",
+          "score": 0.7780150771141052
+        },
+        {
+          "id": "C1E001:P0255",
+          "score": 0.7776703834533691
+        }
+      ],
+      "final": [
+        {
+          "id": "C1E001:P0250",
+          "score": -6.832015514373779
+        },
+        {
+          "id": "C1E001:P0046",
+          "score": -6.939069747924805
+        },
+        {
+          "id": "C1E001:P0047",
+          "score": -7.1690897941589355
+        },
+        {
+          "id": "C1E001:P0092",
+          "score": -7.410702228546143
+        },
+        {
+          "id": "C1E001:P0235",
+          "score": -7.451727390289307
+        }
+      ],
+      "retrieval_ms": 64.71,
+      "rerank_ms": 3154.72,
+      "prompt_ids": [
+        "C1E001:P0250",
+        "C1E001:P0046",
+        "C1E001:P0047",
+        "C1E001:P0092",
+        "C1E001:P0235"
+      ],
+      "answer": {
+        "parts": [
+          {
+            "claim": "The letter cost gold.",
+            "status": "unresolved",
+            "evidence_ids": []
+          }
+        ],
+        "retries": 1,
+        "invalid_citations": 0,
+        "input_tokens": 2988,
+        "output_tokens": 115
+      }
+    }
+  },
+  {
+    "label": "Controlled error",
+    "question": " ",
+    "cutoff": 1,
+    "run_id": "2d079276-71bc-4493-b1cd-05258327803c",
+    "url": "https://smith.langchain.com/o/98abc327-28d4-45f2-bfae-9d1411fb60d6/projects/p/a2ecd954-e481-404a-8730-7ddb35e4b599/r/2d079276-71bc-4493-b1cd-05258327803c?poll=true",
+    "stages": [
+      {
+        "name": "Check story",
+        "depth": 0,
+        "type": "chain",
+        "duration_ms": 3,
+        "error": true,
+        "tokens": 0
+      }
+    ],
+    "result": {}
+  }
+]

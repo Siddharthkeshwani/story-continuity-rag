@@ -1,0 +1,91 @@
+question_id,version,review_key,correct,supported_claims,factual_claims,text_leak,note
+T01,v2,cb3d17997ef98c2f2e11938617f37fd48e6fea2aefeb863423b0e849e42ba89c,0,0,1,0,Sister freed him.
+T02,v2,d2c0f10c5683f904b8995e0abdaa8e297647efcab78374ddf6c66b721d16046f,0,0,0,0,Missing the sister.
+T03,v2,476a67bba0efb16fad19193de826e67e8ce3aed9058f79bdbec1cb620c701a78,0,0,1,0,Wrong encounter and no spell.
+T04,v2,132372932fc79fc62dbb20893393adfacb48d91eaab32a0d90c31f09669c35ac,1,1,1,0,Campfire named in the recap.
+T05,v2,7e042136b72cbfcb17a75093b0fe9529448e542825f218bbb40535bd573a6489,0,0,1,0,Confuses the waterfall location with creatures in the water.
+T06,v2,7410a18ea08774c0f645503ec3a37c875d0912957a1948b30f3af865a8a39261,0,0,0,0,Missing the king.
+T07,v2,0cbee7da4e0ffe95779e401a33f90de0bb5da732f5a89b48adefd0c7a88f6aab,0,0,1,0,Wrong encounters and no color.
+T08,v2,2a10588fe71e506086dc6d42e33b73a745b1f6ad5a6d47ba852341744203966b,1,1,1,0,Amount matches the chest inventory.
+T09,v2,a3e2d9013a41514ce85f00d9daacae827f9724cffd6cbfeb048d36c05a354d0a,1,1,1,0,Another recording of the introduction names Uncle Kevdak.
+T10,v2,03d9ef6d079c1600805330ec668fac5e179f4d8bb8da1ce803176936b60b7ad5,1,1,1,0,The twins are identified by the editorial fact.
+T11,v2,dd37c2aed9ca97b47d2734e5c962a3d7dd36662bb967c1606f73aab5fa564b08,0,0,0,0,Missing his office.
+T12,v2,df036075ad5350174a70adcf38cda3391247ad4c4a6117a4d0594df293834ac1,0,0,1,0,Restates question without describing the alliance.
+T13,v2,f63b61ad79de7247750026d3dde609a5b6e4d8425d52d6cdaea03287131c6986,1,1,1,0,The suggestion is explicit.
+T14,v2,5e21b97eff35c04b720b12c8e204b034d10bb91412174b52bc199a3aa90e5260,1,1,1,0,Clarota projected a mental image.
+T15,v2,7b482df7e45425d03c84f6acbc8592d85648b26e8fff82d3188d3057a1348b01,0,1,2,0,First part is supported but second conflicts with the first.
+T16,v2,4fdfa626c6d98cc9fc31b27b3d5748f280176d2e178352a1f4919cba985b0abe,0,2,3,0,Escape and sister's injury are supported; Percy did not take the castle.
+T17,v2,38fe6c54fd94cae5c15f4de37f7f3c9a1641a894017d470e2a142adac40866ad,0,0,1,0,Reverses which creature ambushed him.
+T18,v2,d6d2b86c25af161cb37e0e3314e4f1ac10b35317f7df6eaa4e113f5adb2bf28d,0,0,0,0,Neither requested fact supplied.
+T19,v2,0a93a70812ad82350325018ecd81bc124b7942c2469bb9e2d8f22db1d14c20e6,0,0,0,0,Missing Vex and the amount.
+T20,v2,909563de8a75b66c3f013f32d177c2fb3c70c601cf0c17620002761ecab04f63,0,0,0,0,Missing explosion and sword.
+T21,v2,bc63ce319beeb875025c5197a2160cccd05e3bf78fe5957723d73a137c6bd2dd,0,0,0,0,Does not correct the family history.
+T22,v2,5ddf92038840af58885275bd67fde2f70b07c285f15b90523bdca928ef3de618,0,0,0,0,Does not correct the journey name.
+T23,v2,99e19d23420f834f95c285810ca4946e0d18fd9741c1b3d2c0b7fcaf5c5781d8,0,0,0,0,Does not correct the introduction.
+T24,v2,29bacce8a018d3a6d186d2f33cf2a3c4e8842bf0e46986d5408f09d17bbb49b0,0,0,0,0,Does not correct the statue claim.
+T25,v2,d9da6ac4b2bbb1f4f0083ef7abbf221594e9eb6d5ffdf01e62ddbfacf2aeac18,0,0,1,0,Repeats the false recap.
+T26,v2,6f959e73b2eb739a534de5f5235b261207a839cb40b3ccdde3dd9a0367b3d6a3,0,0,0,0,Generic citation failure does not explain the missing king identification.
+T27,v2,7189bc45abcb04e3c40af49f7c135d62d8823671d7f79590a2ed03b1cb36d83f,0,0,0,0,Does not explain why the rescue location is unknown.
+T28,v2,214485f8f67b3bc50cd007195f6bbe45a321cbc10b8cafd732dafa58cb13e70f,0,0,0,0,Does not explain why the amount is unknown.
+T29,v2,fa963083517052dfc7a8178c02eaa3332014dafb203c66f99b1615ca9d9ee5a7,0,0,0,0,Does not explain why the statue conversation is unknown.
+T30,v2,9cacce95f83edf2e768ded342be42c2e347cee778c86e80b29de74aa10f323f9,0,0,0,0,Does not explain the difference between Percy and the audience.
+T01,v3,9e1b837c9f6377dd35d920f04bed5a6be5055182d0915dc1c20d906a90fe6093,0,0,1,0,Sister freed him.
+T02,v3,07fed7d9f73b899d1a3b5ede029915a9f82d3bf51bd1ec31cb859b9b14ae55f1,0,0,0,0,Missing the sister.
+T03,v3,e8ed7eecee189de11fd13c357016e8d5269c19cacf82e82989987d25ebd0f8d5,0,0,1,0,Wrong encounter and no spell.
+T04,v3,d29fafbe9384ff804d7f90c4ce5eed0711decc6cf15bd4590903bc126115dec2,1,1,1,0,Campfire named in the recap.
+T05,v3,1a199d5976d5e637ec1739966479d1fc40d50e6ccb5d915f9a422edce2f0a422,0,0,1,0,Confuses the waterfall location with creatures in the water.
+T06,v3,4d5380495694b87694a4484b2c73570c096e3359fb6b40e9e339422b56456ad0,0,0,0,0,Missing the king.
+T07,v3,843dee6f74a994a284d1397937a381902ad6fc3670aef964103ed66ec4c6762e,0,0,1,0,Wrong encounters and no color.
+T08,v3,41cc585cc3911b5767b67dd1c83d81c4a643aa99ca37c96955fc0673630afb80,1,1,1,0,Amount matches the chest inventory.
+T09,v3,869670c285f016b768140f31f2590b60b550349e2bb13ae2d8de121ecab0fb0b,1,1,1,0,Another recording of the introduction names Uncle Kevdak.
+T10,v3,3de120e6d39cbfad393b724df435182eff0f02c8ef934dad4fd05bd016dd7f13,1,1,1,0,The twins are identified by the editorial fact.
+T11,v3,df50520d36a369fab0f5c3a58733614a44117a58cff5510e5f48306aadabe371,0,0,0,0,Missing his office.
+T12,v3,0002bd2b80f3ebf25f59cb016575305e242a41621147167a0632c5150a906919,0,0,1,0,Restates question without describing the alliance.
+T13,v3,68e479155e42e9c687be70b24464cf6d426ac40a6ae7edd7894394b16af84cb5,1,1,1,0,The suggestion is explicit.
+T14,v3,5ab9013d2ed1f84464bd96c1e3337b9658035cd5be5fff1bb9f9a1cb2d6cf991,1,1,1,0,Clarota projected a mental image.
+T15,v3,c39e97e1481624db9fb114131a3c996139348415aafafc2ee2813bdda8eca1d2,0,1,2,0,First part is supported but second conflicts with the first.
+T16,v3,df2ea6561467a1a6718001859c14f9b73eec6d1feb96ef5f999c3f6772ec96a6,0,2,3,0,Escape and sister's injury are supported; Percy did not take the castle.
+T17,v3,2390f7e96ba4256a8788f7dc0dcef2e540c0cfdfb5ff955218edbca456dd79f6,0,0,1,0,Reverses which creature ambushed him.
+T18,v3,2c8e31da94441b15a3289ebdba2593fd5719e6b0f3cf35dde465fcac415e7d82,0,0,0,0,Neither requested fact supplied.
+T19,v3,938934c60c3de832b69bd9c492e9bda3bc439455e552a18ca066c62e9a90ead8,0,0,0,0,Missing Vex and the amount.
+T20,v3,aadcd2cce1052f76e9e1c1f7c6d5a1fe213019d14e680e340cea2a88e6fc463a,0,0,0,0,Missing explosion and sword.
+T21,v3,b04b51fc6255848674374e06bdaf4698e1c16f62e72fbf4a9a9ef49342573f87,0,0,0,0,Does not correct the family history.
+T22,v3,1912c62c5bbeaf6dab33aa45fd158934a3d681d897840d2c714fa12deaa1145b,0,0,0,0,Does not correct the journey name.
+T23,v3,747c70165944552c87beec245e6dcd834a3cf9bf2ceb3e34bc85256a7409dc9b,0,0,0,0,Does not correct the introduction.
+T24,v3,1a9ef5eeb2a956eb4b256c99cec4b8c2a429e01055f63e758d6ac73a5f3d42b4,0,0,0,0,Does not correct the statue claim.
+T25,v3,4eacf49928de6af977d9a9fb9368b3817716856b910e97f549d1fafc5c49ffea,0,0,1,0,Repeats the false recap.
+T26,v3,1d83e34fe134495021e9b285771c9ea2d596463fa2f044a407dbd4a5c652b7d9,0,0,0,0,Generic citation failure does not explain the missing king identification.
+T27,v3,d32b5a38bfc458c41ac02fd1faadbd58ad98289c4af97870e1fef1a04dae39ef,0,0,0,0,Does not explain why the rescue location is unknown.
+T28,v3,fff1da133b6fcfea61a3ca1a9ccb7a8e889064038a453a04c39b8f682b0aa82b,0,0,0,0,Does not explain why the amount is unknown.
+T29,v3,861472e63e7a2c643042d0c6ce430be6b8c28874623c611b4fc520931125ae59,0,0,0,0,Does not explain why the statue conversation is unknown.
+T30,v3,1095f06195f2a09c014fe2438403a3f960a41233005846a2c3914c917b3f8643,0,0,0,0,Does not explain the difference between Percy and the audience.
+T01,v4,e8cb7502ca2c0d2cd2f24b0cd90080ba58c6c961359442fe6bc7850b9104a265,0,0,0,0,Omits the sister.
+T02,v4,7f7a94c4caf3dce8c94861125ba654a8d4378b6f681cc0498240784b6d444e4d,0,0,0,0,Missing the sister.
+T03,v4,04fedeb0bd47e6e8445e58e0b4e719b661118fe499b6c4ea4a9258f6a0ad2fbd,0,1,1,0,The cited turn establishes a spell but the answer never names it.
+T04,v4,decda1ba5a2da9b1ad1795308e5033fc06aae1bd3d3384b871c92a0e2160fc91,1,1,1,0,The campfire is explicit.
+T05,v4,86aa49ea5c97e56774825980a2f3278e53a39db09754c9bff3bb80c56c33b2e6,0,0,1,0,The cited encounter is behind a waterfall; the answer does not establish the bottom of the crevasse.
+T06,v4,95775d3d72c927aa5c5f950add4dfe171c414627bd54ab49ff38d4f031a1f3f1,0,0,0,0,Missing the king.
+T07,v4,21872b1c89d670ab2b2e45d6192fc9f54dc972a020d8e1cc8f37d3c297092a56,0,1,1,0,The cited passage describes the glow but the answer omits the color.
+T08,v4,350e4c411cf15c69c1bad7d6b5079534d9e4619bd6c04ba62f2b47c0937421cf,0,0,0,0,Missing the amount.
+T09,v4,6c272a695610db80b7b54acaada38d457e480e136b34d7921f9cf7b50b397037,1,1,1,0,Kevdak is identified as Grog's uncle.
+T10,v4,2385bc5796fd528425d974fb2c76402227490675c6729a25e408a74b9ea6fae0,1,2,2,0,Both the twins and the extra bear detail have support.
+T11,v4,6e8cf3012342c13482df1b2400ce3b0a101ea57871ebbb717617026cb91a5234,0,0,0,0,Missing his office.
+T12,v4,adc1ce03c27b57088261155c215a7ec84eb867df271579f06602ec32769021c9,1,1,1,0,The episode 7 recap describes a tenuous alliance.
+T13,v4,1a533cee579840a9c40a7b393db746780d9c85529bea7aa5c15607a45de124bf,0,0,1,0,LIAM suggests the watch; Clarota responds. It is also a different scene.
+T14,v4,1a5efd6034b66352cfba8b7a6770239d714a8d17a96ca18bdce266b7a089e9fb,1,1,1,0,Clarota projected a mental image.
+T15,v4,2fac01837609d0de68ec7cc2c3afd433309df4a7c489b18256f603570b2fbb35,1,2,2,0,"The birthplace, rite age and extra guild detail have support."
+T16,v4,1da7db3cc73db02af360692d0adbd9b98f52346d4b16f5a8eb19915f9ae54193,0,2,2,0,Correct escape details but no answer about the Briarwoods.
+T17,v4,8f44e0886e754e03eafbe98125341de0d0b31c5ed1fa6bd6e0edcb9e082883d4,1,1,1,0,Correctly separates the duergar from the intellect devourer.
+T18,v4,159fbab14076b252a49eaa17a745fec9c36b66d0bf4e928ac3052fab51250ef7,0,0,1,0,The entrance led to the throne room; a different early scene mentions barracks.
+T19,v4,a6eea7274824e24ca65af13451f96d4e9fc6e24cc83301f4226fa5120b15cea5,0,0,2,0,Both composite claims misidentify the person; the second also changes the amount.
+T20,v4,78e565d8c015d226bb71bf0efb2d6c218f924d23505aceab7d41ca267efa2935,0,0,0,0,Missing explosion and sword.
+T21,v4,b3819c227a2a3b834e3e2f91d3b568503b25572e38e08f65007a08181d2ee51a,0,0,0,0,Does not correct the family history.
+T22,v4,f71c89b2791dfbab1d6fa2ef77cc2e0d37fcd9888ce69a68ce0b41e06bd99a08,0,0,1,0,Accepts the false journey name.
+T23,v4,a07ac7ad58f7b7afc8eb2788c02a9912f705f297cfbf7518f59353fd2b0f8aca,0,0,0,0,Does not correct the introduction.
+T24,v4,040fbbc183cba50d4ee9dc9dfdd11e644df1feb3fb92ff242ee2898c1f745573,0,0,0,0,Does not correct the statue claim.
+T25,v4,5e5cfe80e1f30d592792a05da805320018a02e707f09cbff06666538490496f8,0,0,1,0,Repeats the false recap.
+T26,v4,c2ac79db55c80b48ff339f3a5078e2a9b503f273cb3ff2db99e73e12b87df5ea,0,0,0,0,Generic citation failure does not explain the missing king identification.
+T27,v4,0681328376196075e1fe198b655cac09ea64c74a250e7b78cf5ff46f1b85b770,0,0,0,0,Does not explain why the rescue location is unknown.
+T28,v4,d4f7f92e64a895bc90780e419ff3f939d114cfa736f974e2b961b30eedf26bfb,0,0,0,0,Does not explain why the amount is unknown.
+T29,v4,dace00b15bbbe2e4a1fd0778a8ffa1b663c05d635aadcd1d4b867bf7188a8f99,0,0,2,0,Assigns two unrelated early actions to Clarota. Neither is the later statue suggestion.
+T30,v4,2ed443f81f875947f1bc73f3e35f0fab197644da76c7723d9e0048cf666de4a9,0,0,0,0,Does not explain the difference between Percy and the audience.

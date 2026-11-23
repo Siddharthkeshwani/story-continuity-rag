@@ -1,0 +1,31 @@
+question_id,version,review_key,correct,supported_claims,factual_claims,text_leak,note
+D01,v2,c52b99cc4da79547812c4ec3f4ce6dc4cee59941ad2abba53153053ab1f53620,1,4,4,0,Matt confirms both requested facts and the extra description.
+D02,v2,63f7489bde2d7f31136d2b6e231cfd52599fd5167bd5785a96c1513d8c69cfca,1,1,1,0,The only requested fact is answered; an unnecessary unresolved part follows.
+D03,v2,3867c3e8371a7fa9d229f68e4510dcd7242d7eaca88dd2fec1eb072431bddc3e,0,0,0,0,Missing performer and reason.
+D04,v2,d1dcd8092491d5101934a341ea1d6ba69cf49d851714c27bf6953276c2ca6e1e,1,1,1,0,Kraghammer appears in the episode 2 recap.
+D05,v2,d3a048d956859b6c091eaf91bcdde2884723ccc4c152aa879a0ef3553e4f5e4b,0,0,0,0,Omits the river description.
+D06,v2,93d2003b9d57448f0d8422017ba10d9bb8c1fccdbab97d17efcc137db14d3e2f,1,2,2,0,The scene describes hovering and entering the tent.
+D07,v2,08462cb37a051393c16f1872223d6c0282691f56036c8de5c3cb9ab87457d06d,1,1,1,0,The requested purpose is correct.
+D08,v2,b9827a91e6c8ddc3c890c935fb850728c1f3967e6daeedb662f3b2c523c17327,0,0,0,0,Omits the burden of the large statues.
+D09,v2,5f239bb1c33af1bea9ced0de4a9ef320f42a9554aedc6da647a4ea45d1ae43c5,0,0,1,0,Matt's opening account gives no numeric amount.
+D10,v2,08c87ae7888e020a3c1a5ab211ddd2bf2d18ca81046b78f6fe4117df496095f3,1,1,1,0,The blast destroyed the armor.
+D01,v3,1d6bf2621eb869189229ba7be40457037dd24b912fe18ec56635e041a1ae0aa1,1,4,4,0,Matt confirms both requested facts and the extra description.
+D02,v3,03f5d4bd35ad7437ba6be2e9f37d40a161a4d40cff9bdb1d50dd2b6fb21f56b9,1,1,1,0,The only requested fact is answered; an unnecessary unresolved part follows.
+D03,v3,1cc982bbde594c91b7fbce58e10d7e14b74a1768055edc6effa651af973f3a75,0,0,0,0,Missing performer and reason.
+D04,v3,a8a1b6d1e037cde3ad7f0770eb90efd7c538873acffca655a921a03e391a7586,1,1,1,0,Kraghammer appears in the episode 2 recap.
+D05,v3,de4ca4da58c7aeb186f722771cdc39cdb836f5b5b4ec4762d35988ec097e2e0e,0,0,0,0,Omits the river description.
+D06,v3,b6e833d794298348dc13cbf759b8836ebefa23b15e74ccf0220871de600e0eed,1,2,2,0,The scene describes hovering and entering the tent.
+D07,v3,9c37b98cc90b35e72a810cbfa2bc3d67556685064df962505d4e08a9eb85bfd3,1,1,1,0,The requested purpose is correct.
+D08,v3,988d25344587398eff0434ca3c52974f6bc3f7884a1a0df2112f9c5fe5b9a682,0,0,0,0,Omits the burden of the large statues.
+D09,v3,c77e554fea10ce0a2d43a3632b223087027c413a9895afbd4f44964dcb1f87dc,0,0,1,0,Matt's opening account gives no numeric amount.
+D10,v3,1573035d958f48a52a8d71ec4fa35a85cfc2a6197eccc40bacb34222b94a38ca,1,1,1,0,The blast destroyed the armor.
+D01,v4,c5db8669d4bf9d9952c69d7caf7198291faf50151d9dee44b855b73c7ac71d0e,1,2,2,0,Both parts match turn 51.
+D02,v4,8d7419a7059e3c12454174b85bd4ba69e5ab11e6957c74212eb8ec04cdd52e0f,0,0,0,0,Missing the keep.
+D03,v4,1accb907548ef3ef567137ec0135eb78cb7481efc5dbaddda036faad54509a64,0,0,1,0,The cited dialogue does not establish the performer was absent.
+D04,v4,144a638a374b406752ad9c58ecacebb38f8bc5d94dd75762e2064e724c124376,1,1,1,0,The destination is correct.
+D05,v4,ae9f471a98c300aa450b8f5aefc4fe5cec505d1f9fb0b6abdffe0e29c12b11b7,1,1,1,0,Accurately describes the river.
+D06,v4,219c18bc05edede133ce3df08982b4521851b0903e4a98df8685e843242107d5,1,2,2,0,Both details appear in the scene.
+D07,v4,4dfeb27aedb005ea3d552a48d0d0b3fb4097d6b1c8611b0eea22172d9e254e75,1,1,1,0,The captive says it resists assault from all sides.
+D08,v4,c7f96bc7a52cb65663bef954da23ef55e3de22ef8bd74a1b3a52ff2085b56b74,0,1,1,0,Repeats the carrying difficulty without explaining the burden.
+D09,v4,9700d77f91a2df1784fe40cb8ec848bd0790dc1b2d7a907949d73a57966c263a,0,0,1,0,No numeric amount is promised in the opening account.
+D10,v4,29eb6b11fd37c434da7e3a8786abccb88267cdf4000b76a57bcd7e9a25a25c5e,0,1,2,0,Destruction is supported; the source uses charred for the blade.

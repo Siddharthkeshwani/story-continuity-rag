@@ -1,0 +1,5 @@
+question_id,pair_id,campaign_id,cutoff,language,question,expected_status,expected_claims,acceptable_evidence_ranges,forbidden_future_fact
+S01,,1,50,English,Which dragon does the episode 50 recap describe as the Cinder King ruling Emon?,established,Thordak,50:149,
+S02,,1,100,English,Which criminal syndicate held the Darrington family's debt in the episode 100 recap?,established,The Myriad,100:181,
+S03,,1,115,English,What did Arkhan attach after he severed his own hand on the ruined tower?,established,The Hand of Vecna,115:106,
+

@@ -1,0 +1,12 @@
+question_id,pair_id,campaign_id,cutoff,language,question,expected_status,expected_claims,acceptable_evidence_ranges,forbidden_future_fact
+"D01","","1","1","English","Who asked Vox Machina to find Lady Kima, and how did she know Kima?","established","Allura Vysoren|They were longtime friends","1:51|1:51",""
+"D02","","1","1","English","What did Matt say was being built after the party saved Emon?","established","A keep","1:51",""
+"D03","","1","1","English","Who played Pike and why was the performer absent?","established","Ashley Johnson|She was in London accepting a BAFTA","1:21|1:21",""
+"D04","","1","2","English","Which town were they headed for in search of Kima?","established","Kraghammer","2:14;1:51",""
+"D05","","1","3","English","What kind of river did Matt describe near the duergar ambush?","established","A deep underground river","3:74",""
+"D06","","1","4","English","How did Clarota move on the approach to the goblinoid village?","established","He hovered about a foot above the ground","4:50",""
+"D07","","1","5","English","What was Emberhold built to resist?","established","Assault from all sides","5:227",""
+"D08","","1","8","English","What made carrying the two stone companions difficult?","established","Their weight as large solid stone statues","8:59;8:92",""
+"D09","","1","1","English","What numeric reward did Allura promise in Matt's opening account?","unresolved","The opening account gives no numeric amount","",""
+"D10","","1","10","English","What did the blast do to the natural armor in the chest?","established","The blast destroyed it","10:279",""
+
