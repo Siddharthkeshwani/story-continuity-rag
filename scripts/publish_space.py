@@ -12,10 +12,12 @@ load_dotenv(ROOT / ".env")
 
 
 def publish(dataset, space=None):
+    model = os.getenv("CHAT_MODEL") or "openai/gpt-oss-120b"
+    chat_key = "GEMINI_API_KEY" if model.startswith("gemini-") else "GROQ_API_KEY"
     api = HfApi()
     api.whoami()
     if space:
-        for key in ("GEMINI_API_KEY", "LANGSMITH_API_KEY"):
+        for key in (chat_key, "LANGSMITH_API_KEY"):
             if not os.getenv(key):
                 raise RuntimeError(f"Missing {key} for the Space")
     spec = json.loads((ROOT/"deployment/release.json").read_text())
@@ -35,9 +37,9 @@ def publish(dataset, space=None):
     if space is None:
         return
     api.create_repo(space, repo_type="space", space_sdk="docker", exist_ok=True)
-    for key in ("GEMINI_API_KEY", "LANGSMITH_API_KEY"):
+    for key in (chat_key, "LANGSMITH_API_KEY"):
         api.add_space_secret(space, key, os.environ[key])
-    variables = dict(CHAT_MODEL=os.getenv("CHAT_MODEL","gemini-3.8-flash"), LANGSMITH_TRACING="true",
+    variables = dict(CHAT_MODEL=model, LANGSMITH_TRACING="true",
                      LANGSMITH_PROJECT=os.getenv("LANGSMITH_PROJECT","story-continuity"),
                      HF_DATASET_REPO=dataset, HF_DATASET_REVISION=result.oid)
     for key,value in variables.items():

@@ -10,7 +10,10 @@ from .models import ROOT, E5, RERANKER, REVISIONS, model_dir
 load_dotenv(ROOT / ".env")
 DATA = ROOT / "data"
 PROCESSED = DATA / "processed"
-CHAT_MODEL = os.getenv("CHAT_MODEL") or "gemini-3.8-flash"
+CHAT_MODEL = os.getenv("CHAT_MODEL") or "openai/gpt-oss-120b"
+IS_GEMINI = CHAT_MODEL.startswith("gemini-")
+CHAT_PROVIDER = "Google Gemini" if IS_GEMINI else "Groq"
+CHAT_KEY = "GEMINI_API_KEY" if IS_GEMINI else "GROQ_API_KEY"
 INDEXES = ROOT / "indexes"
 FACTS = DATA / "editorial" / "character_facts.csv"
 RAW = DATA / "raw" / "baseline" / "data" / "cleaned data"
@@ -59,10 +62,10 @@ def model_source(name):
 
 
 def chat_settings():
-    key = os.getenv("GEMINI_API_KEY")
+    key = os.getenv(CHAT_KEY)
     if not key:
-        raise RuntimeError("Google Gemini generation requires GEMINI_API_KEY in .env or Space Secrets.")
-    return dict(model=CHAT_MODEL, api_key=key, base_url="https://generativelanguage.googleapis.com/v1beta/openai/")
+        raise RuntimeError(f"{CHAT_PROVIDER} requires {CHAT_KEY} in the project environment or app secrets.")
+    return dict(model=CHAT_MODEL, api_key=key, base_url=("https://generativelanguage.googleapis.com/v1beta/openai/" if IS_GEMINI else "https://api.groq.com/openai/v1"))
 
 
 def turn_id(ep, n):

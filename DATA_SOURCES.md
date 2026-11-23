@@ -18,4 +18,4 @@ Four editorial facts summarize specific exchanges. Each cites the episode where 
 
 - The E5 snapshot used for indexing and query encoding is `614241f622f53c4eeff9890bdc4f31cfecc418b3`. [Model card](https://huggingface.co/intfloat/multilingual-e5-small)
 - The cross-encoder snapshot is `1427fd652930e4ba29e8149678df786c240d8825`. [Model card](https://huggingface.co/cross-encoder/mmarco-mMiniLMv2-L12-H384-v1)
-- Answer generation runs through Google’s OpenAI-compatible endpoint. It uses the model recorded with each benchmark run. The earlier Qwen results are preserved in the historical archive. [Google Gemini API](https://ai.google.dev/gemini-api/docs/openai)
+- Answer generation is independent of the passage embeddings. The benchmark records the exact chat model in every row. The current release uses Groq with structured outputs. [Groq model documentation](https://console.groq.com/docs/structured-outputs)

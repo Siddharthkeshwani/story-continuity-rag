@@ -24,7 +24,7 @@ A writer selects a campaign and the last episode they can use, asks a story ques
 
 ## Run
 
-The prepared Windows workspace runs with `.\scripts\start.ps1`. The launcher creates the Python 3.11 environment on a fresh checkout. Put the Google Gemini free-plan credential in the root `.env` as `GEMINI_API_KEY`. All versions, the UI and the evaluator use `CHAT_MODEL=gemini-3.8-flash`. Search-only mode works without generation credentials. LangSmith uses `LANGSMITH_TRACING`, `LANGSMITH_API_KEY` and `LANGSMITH_PROJECT`. The key names are documented in [.env.example](.env.example).
+The prepared Windows workspace runs with `.\scripts\start.ps1`. The launcher creates the Python 3.11 environment on a fresh checkout. Put the Groq free-plan credential in the root `.env` as `GROQ_API_KEY`. All versions, the UI and the evaluator use `CHAT_MODEL=openai/gpt-oss-120b`. Search-only mode works without generation credentials. LangSmith uses `LANGSMITH_TRACING`, `LANGSMITH_API_KEY` and `LANGSMITH_PROJECT`. The key names are documented in [.env.example](.env.example).
 
 The app opens on [localhost](http://127.0.0.1:8501). In Campaign 1, ask who requested help finding Lady Kima. In Campaign 2, ask which town borders the Ustaloch in the opening narration. Expand the evidence for the original speaker labels. Campaign and cutoff changes clear displayed results.
 
@@ -70,4 +70,4 @@ The public Hugging Face Dataset holds the 378 MB archive. The runtime can use St
 
 `scripts/publish_space.py --dataset OWNER/DATASET --space OWNER/SPACE`, executed with Python, publishes the verified archive, sets the Dataset revision and the model, adds provider credentials through Space Secrets and uploads an allowlist of app files. Publishing requires a Hugging Face write login or `HF_TOKEN`. Deployment uses the project's Dockerfile. [Hugging Face Streamlit hosting](https://huggingface.co/docs/hub/spaces-sdks-streamlit)
 
-Streamlit Community Cloud uses the GitHub repository’s `main` branch, `app.py` and Python 3.11. Store the Gemini and LangSmith settings in the app’s Secrets panel. The public archive downloads at the revision recorded in the release file. [Community Cloud secrets](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management)
+Streamlit Community Cloud uses the GitHub repository’s `main` branch, `app.py` and Python 3.11. Store the Groq and LangSmith settings in the app’s Secrets panel. The public archive downloads at the revision recorded in the release file. [Community Cloud secrets](https://docs.streamlit.io/deploy/streamlit-community-cloud/deploy-your-app/secrets-management)

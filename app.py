@@ -13,7 +13,7 @@ original turn range and an expandable English source excerpt.
 """
 import os
 import streamlit as st
-from src.config import CHAT_MODEL, corpus, excerpt, manifest
+from src.config import CHAT_KEY, CHAT_MODEL, CHAT_PROVIDER, corpus, excerpt, manifest
 from src.artifacts import ensure_assets
 from src.retrieve import backend_store, check_story
 from src.v1 import QUESTION
@@ -43,9 +43,9 @@ with st.sidebar:
     language = st.selectbox("Answer language", ["English", "Hindi", "Hinglish"])
     version = st.selectbox("Search method", ["v4", "v3", "v2"],
                            format_func=lambda v:{"v4":"V4 · Reranked search","v3":"V3 · Chroma","v2":"V2 · FAISS"}[v])
-    has_chat = bool(os.getenv("GEMINI_API_KEY"))
+    has_chat = bool(os.getenv(CHAT_KEY))
     evidence_only = st.toggle("Show search results only", value=not has_chat)
-    st.caption(f"Answer model · Google Gemini · {CHAT_MODEL}")
+    st.caption(f"Answer model · {CHAT_PROVIDER} · {CHAT_MODEL}")
     st.caption("Original dialogue is shown in English. Speaker labels follow the source transcript.")
     st.markdown("[CRD3 source and licence](https://github.com/RevanthRameshkumar/CRD3)")
 question = st.text_area("Story question or recap claim", value=QUESTION if campaign == 1 else
@@ -68,12 +68,12 @@ if st.button("Check story", type="primary", icon=":material/search:"):
             if "timeout" in type(err).__name__.lower():
                 st.error("The chat service timed out. Retry the same question.")
             elif "connection" in type(err).__name__.lower():
-                st.error("The Google Gemini API could not be reached. Retry or use search results only.")
+                st.error(f"The {CHAT_PROVIDER} API could not be reached. Retry or use search results only.")
             else:
                 if getattr(err, "status_code", None) == 429:
                     st.error("The model provider rejected the request because of a rate or credit limit.")
                 elif getattr(err, "status_code", None) == 404:
-                    st.error(f"Google did not make {CHAT_MODEL} available for this request. Use search results only to inspect the original passages.")
+                    st.error(f"{CHAT_PROVIDER} did not make {CHAT_MODEL} available for this request. Use search results only to inspect the original passages.")
                 elif isinstance(err, (ValueError, RuntimeError)) and type(err).__module__ == "builtins":
                     st.error(str(err))
                 else:

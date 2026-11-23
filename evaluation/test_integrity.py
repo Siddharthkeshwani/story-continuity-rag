@@ -69,6 +69,15 @@ class Integrity(unittest.TestCase):
         self.assertEqual(result["prompt_ids"], [])
         self.assertEqual(result["answer"]["parts"][0]["status"], "unresolved")
 
+    def test_unresolved_claim_cannot_publish_an_uncited_location(self):
+        from langchain_core.runnables import RunnableLambda
+        fake = SimpleNamespace(content=json.dumps({"parts":[{"claim":"The inn was in an invented city.",
+                               "status":"unresolved","evidence_ids":[],"support_quotes":[]}]}),usage_metadata={})
+        with patch("src.answer.chat",return_value=SimpleNamespace(bind=lambda **kw:RunnableLambda(lambda _:fake))):
+            result = generate("Where was the inn?",[self.tables["chunks"]["F001"]],1,1,"English")
+        self.assertNotIn("invented city", result["parts"][0]["claim"])
+        self.assertIn("Campaign 1, episode 1", result["parts"][0]["claim"])
+
     def test_valid_id_with_invented_quote_is_rejected(self):
         from langchain_core.runnables import RunnableLambda
         fake = SimpleNamespace(content=json.dumps({"parts":[{"claim":"Unsupported detail","status":"established",
