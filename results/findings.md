@@ -16,4 +16,4 @@ These are retrieval-only runs. V4's median retrieval-plus-reranking request took
 
 **Abstention trades coverage for fewer guesses.** The pinned reranker emits raw scores. The initial threshold is zero. This would stop generation for 12 of 34 held-out questions, including all six expected abstentions and six questions that had answers. The threshold does not measure factual accuracy. A related but misleading scene can score highly. A second check verifies each source ID and verbatim quote against the supplied passages.
 
-**Answer generation.** The project uses Google’s `gemini-3.8-flash`. Google returned HTTP 404 for `gemini-2.5-flash` with this account and recommended the replacement. The table above measures source retrieval. Historical Qwen answer scores are archived separately. [Historical review](qwen-baseline/findings.md)
+**Answer generation.** The release uses Groq’s `openai/gpt-oss-120b`. Gemini 3.8 Flash returned service errors and reached its 20-request daily allowance. Each run records its model, citations and LangSmith trace ID. [Historical Qwen review](qwen-baseline/findings.md)

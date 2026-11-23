@@ -62,7 +62,7 @@ def benchmark(cases_path, versions, out, evidence_only=False, resume=False):
             if previous is not None and not rows[previous]["error"]:
                 continue
             if rows and not evidence_only:
-                sleep(7)
+                sleep(25)
             run_id = str(uuid4())
             cutoff, campaign = int(case["cutoff"]), int(case["campaign_id"])
             row = dict(**case, version=version, corpus=rev, cases_sha256=digest,

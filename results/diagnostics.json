@@ -1,0 +1,527 @@
+[
+  {
+    "label": "Campaign 2 source search",
+    "question": "Which small town borders the Ustaloch in the opening narration?",
+    "campaign": 2,
+    "cutoff": 1,
+    "run_id": "6ee83387-c8d3-4210-bfc1-d222b48d43a7",
+    "url": "https://smith.langchain.com/o/98abc327-28d4-45f2-bfae-9d1411fb60d6/projects/p/a2ecd954-e481-404a-8730-7ddb35e4b599/r/6ee83387-c8d3-4210-bfc1-d222b48d43a7?poll=true",
+    "stages": [
+      {
+        "name": "Check story",
+        "depth": 0,
+        "type": "chain",
+        "duration_ms": 14870,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Eligible passage search",
+        "depth": 1,
+        "type": "retriever",
+        "duration_ms": 11124,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Rerank candidate passages",
+        "depth": 1,
+        "type": "chain",
+        "duration_ms": 3655,
+        "error": false,
+        "tokens": 0
+      }
+    ],
+    "result": {
+      "initial": [
+        {
+          "id": "C2E001:P0124",
+          "score": 0.8393533229827881
+        },
+        {
+          "id": "C2E001:P0152",
+          "score": 0.8353198766708374
+        },
+        {
+          "id": "C2E001:P0029",
+          "score": 0.8097458481788635
+        },
+        {
+          "id": "C2E001:P0125",
+          "score": 0.8071122169494629
+        },
+        {
+          "id": "C2E001:P0101",
+          "score": 0.8057965636253357
+        },
+        {
+          "id": "C2E001:P0167",
+          "score": 0.8029732704162598
+        },
+        {
+          "id": "C2E001:P0028",
+          "score": 0.798606276512146
+        },
+        {
+          "id": "C2E001:P0159",
+          "score": 0.7947319149971008
+        },
+        {
+          "id": "C2E001:P0169",
+          "score": 0.7943577766418457
+        },
+        {
+          "id": "C2E001:P0111",
+          "score": 0.7943568229675293
+        },
+        {
+          "id": "C2E001:P0046",
+          "score": 0.7918612360954285
+        },
+        {
+          "id": "C2E001:P0244",
+          "score": 0.7917253971099854
+        },
+        {
+          "id": "C2E001:P0110",
+          "score": 0.7908837199211121
+        },
+        {
+          "id": "C2E001:P0168",
+          "score": 0.7901223301887512
+        },
+        {
+          "id": "C2E001:P0223",
+          "score": 0.7900650501251221
+        },
+        {
+          "id": "C2E001:P0157",
+          "score": 0.7897818088531494
+        },
+        {
+          "id": "C2E001:P0112",
+          "score": 0.789711594581604
+        },
+        {
+          "id": "C2E001:P0038",
+          "score": 0.7892110347747803
+        },
+        {
+          "id": "C2E001:P0120",
+          "score": 0.788739800453186
+        },
+        {
+          "id": "C2E001:P0235",
+          "score": 0.7880737781524658
+        }
+      ],
+      "final": [
+        {
+          "id": "C2E001:P0029",
+          "score": 1.3506169319152832
+        },
+        {
+          "id": "C2E001:P0152",
+          "score": -3.0009560585021973
+        },
+        {
+          "id": "C2E001:P0124",
+          "score": -3.5326647758483887
+        },
+        {
+          "id": "C2E001:P0101",
+          "score": -3.6965510845184326
+        },
+        {
+          "id": "C2E001:P0125",
+          "score": -3.877120018005371
+        }
+      ],
+      "retrieval_ms": 11125.09,
+      "rerank_ms": 3655.44,
+      "guardrail": "",
+      "prompt_ids": []
+    }
+  },
+  {
+    "label": "Early cutoff",
+    "question": "What did the Mighty Nein rename the damaged Squalleater?",
+    "campaign": 2,
+    "cutoff": 1,
+    "run_id": "1ede25ca-020d-424d-bef8-b20c23029024",
+    "url": "https://smith.langchain.com/o/98abc327-28d4-45f2-bfae-9d1411fb60d6/projects/p/a2ecd954-e481-404a-8730-7ddb35e4b599/r/1ede25ca-020d-424d-bef8-b20c23029024?poll=true",
+    "stages": [
+      {
+        "name": "Check story",
+        "depth": 0,
+        "type": "chain",
+        "duration_ms": 234,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Eligible passage search",
+        "depth": 1,
+        "type": "retriever",
+        "duration_ms": 70,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Rerank candidate passages",
+        "depth": 1,
+        "type": "chain",
+        "duration_ms": 163,
+        "error": false,
+        "tokens": 0
+      }
+    ],
+    "result": {
+      "initial": [
+        {
+          "id": "C2E001:P0074",
+          "score": 0.8025649189949036
+        },
+        {
+          "id": "C2E001:P0172",
+          "score": 0.8003383874893188
+        },
+        {
+          "id": "C2E001:P0198",
+          "score": 0.7995263338088989
+        },
+        {
+          "id": "C2E001:P0201",
+          "score": 0.7989841103553772
+        },
+        {
+          "id": "C2E001:P0180",
+          "score": 0.7988425493240356
+        },
+        {
+          "id": "C2E001:P0175",
+          "score": 0.7975884675979614
+        },
+        {
+          "id": "C2E001:P0208",
+          "score": 0.7953605651855469
+        },
+        {
+          "id": "C2E001:P0247",
+          "score": 0.794124960899353
+        },
+        {
+          "id": "C2E001:P0207",
+          "score": 0.7940410375595093
+        },
+        {
+          "id": "C2E001:P0173",
+          "score": 0.7936642169952393
+        },
+        {
+          "id": "C2E001:P0209",
+          "score": 0.7922187447547913
+        },
+        {
+          "id": "C2E001:P0232",
+          "score": 0.7918498516082764
+        },
+        {
+          "id": "C2E001:P0197",
+          "score": 0.7910922765731812
+        },
+        {
+          "id": "C2E001:P0196",
+          "score": 0.7904379367828369
+        },
+        {
+          "id": "C2E001:P0148",
+          "score": 0.790418803691864
+        },
+        {
+          "id": "C2E001:P0195",
+          "score": 0.7894775867462158
+        },
+        {
+          "id": "C2E001:P0149",
+          "score": 0.7888100743293762
+        },
+        {
+          "id": "C2E001:P0191",
+          "score": 0.7878447771072388
+        },
+        {
+          "id": "C2E001:P0248",
+          "score": 0.787754476070404
+        },
+        {
+          "id": "C2E001:P0145",
+          "score": 0.787125825881958
+        }
+      ],
+      "final": [
+        {
+          "id": "C2E001:P0196",
+          "score": -5.634128570556641
+        },
+        {
+          "id": "C2E001:P0207",
+          "score": -5.847377300262451
+        },
+        {
+          "id": "C2E001:P0201",
+          "score": -6.363919258117676
+        },
+        {
+          "id": "C2E001:P0197",
+          "score": -6.469845771789551
+        },
+        {
+          "id": "C2E001:P0148",
+          "score": -7.1932692527771
+        }
+      ],
+      "retrieval_ms": 70.83,
+      "rerank_ms": 163.06,
+      "guardrail": "low_relevance",
+      "prompt_ids": [],
+      "answer": {
+        "parts": [
+          {
+            "claim": "Insufficient evidence. The retrieved dialogue does not closely match this question.",
+            "status": "unresolved",
+            "evidence_ids": [],
+            "support_quotes": []
+          }
+        ],
+        "retries": 0,
+        "input_tokens": 0,
+        "output_tokens": 0
+      }
+    }
+  },
+  {
+    "label": "Controlled error",
+    "question": " ",
+    "campaign": 1,
+    "cutoff": 1,
+    "run_id": "7c903f43-4390-40c7-bb7a-af74748860db",
+    "url": "https://smith.langchain.com/o/98abc327-28d4-45f2-bfae-9d1411fb60d6/projects/p/a2ecd954-e481-404a-8730-7ddb35e4b599/r/7c903f43-4390-40c7-bb7a-af74748860db?poll=true",
+    "stages": [
+      {
+        "name": "Check story",
+        "depth": 0,
+        "type": "chain",
+        "duration_ms": 2,
+        "error": true,
+        "tokens": 0
+      }
+    ],
+    "result": {
+      "failure": "ValueError",
+      "http_status": null
+    }
+  },
+  {
+    "label": "Answerable question",
+    "question": "Who asked Vox Machina to help find Lady Kima, and what was their relationship?",
+    "campaign": 1,
+    "cutoff": 1,
+    "run_id": "594eba94-5224-483b-a8e8-ebbeac34b0e8",
+    "url": "https://smith.langchain.com/o/98abc327-28d4-45f2-bfae-9d1411fb60d6/projects/p/a2ecd954-e481-404a-8730-7ddb35e4b599/r/594eba94-5224-483b-a8e8-ebbeac34b0e8?poll=true",
+    "stages": [
+      {
+        "name": "Check story",
+        "depth": 0,
+        "type": "chain",
+        "duration_ms": 4922,
+        "error": false,
+        "tokens": 1717
+      },
+      {
+        "name": "Eligible passage search",
+        "depth": 1,
+        "type": "retriever",
+        "duration_ms": 882,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Rerank candidate passages",
+        "depth": 1,
+        "type": "chain",
+        "duration_ms": 177,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "Generate and validate cited claims",
+        "depth": 1,
+        "type": "chain",
+        "duration_ms": 3860,
+        "error": false,
+        "tokens": 1717
+      },
+      {
+        "name": "RunnableSequence",
+        "depth": 2,
+        "type": "chain",
+        "duration_ms": 3821,
+        "error": false,
+        "tokens": 1717
+      },
+      {
+        "name": "ChatPromptTemplate",
+        "depth": 3,
+        "type": "prompt",
+        "duration_ms": 1,
+        "error": false,
+        "tokens": 0
+      },
+      {
+        "name": "ChatOpenAI",
+        "depth": 3,
+        "type": "llm",
+        "duration_ms": 3818,
+        "error": false,
+        "tokens": 1717
+      }
+    ],
+    "result": {
+      "initial": [
+        {
+          "id": "F001",
+          "score": 0.8838533163070679
+        },
+        {
+          "id": "C1E001:P0028",
+          "score": 0.8283170461654663
+        },
+        {
+          "id": "C1E001:P0027",
+          "score": 0.8254780173301697
+        },
+        {
+          "id": "C1E001:P0063",
+          "score": 0.8218139410018921
+        },
+        {
+          "id": "C1E001:P0212",
+          "score": 0.8153018355369568
+        },
+        {
+          "id": "C1E001:P0264",
+          "score": 0.8134503364562988
+        },
+        {
+          "id": "C1E001:P0016",
+          "score": 0.8122609257698059
+        },
+        {
+          "id": "C1E001:P0163",
+          "score": 0.8122609257698059
+        },
+        {
+          "id": "C1E001:P0204",
+          "score": 0.8109967708587646
+        },
+        {
+          "id": "C1E001:P0106",
+          "score": 0.8102523684501648
+        },
+        {
+          "id": "C1E001:P0211",
+          "score": 0.8099411725997925
+        },
+        {
+          "id": "C1E001:P0241",
+          "score": 0.8096715211868286
+        },
+        {
+          "id": "C1E001:P0216",
+          "score": 0.8096581697463989
+        },
+        {
+          "id": "C1E001:P0076",
+          "score": 0.8093242049217224
+        },
+        {
+          "id": "C1E001:P0078",
+          "score": 0.8086574673652649
+        },
+        {
+          "id": "C1E001:P0084",
+          "score": 0.8079068660736084
+        },
+        {
+          "id": "C1E001:P0121",
+          "score": 0.8078647255897522
+        },
+        {
+          "id": "C1E001:P0073",
+          "score": 0.807645857334137
+        },
+        {
+          "id": "C1E001:P0071",
+          "score": 0.8068898916244507
+        },
+        {
+          "id": "C1E001:P0067",
+          "score": 0.8067266941070557
+        }
+      ],
+      "final": [
+        {
+          "id": "F001",
+          "score": 4.556091785430908
+        },
+        {
+          "id": "C1E001:P0028",
+          "score": -2.9297518730163574
+        },
+        {
+          "id": "C1E001:P0027",
+          "score": -3.149535894393921
+        },
+        {
+          "id": "C1E001:P0063",
+          "score": -4.866700649261475
+        },
+        {
+          "id": "C1E001:P0016",
+          "score": -6.473633289337158
+        }
+      ],
+      "retrieval_ms": 883.24,
+      "rerank_ms": 176.94,
+      "guardrail": "",
+      "prompt_ids": [
+        "F001",
+        "C1E001:P0028",
+        "C1E001:P0027",
+        "C1E001:P0063",
+        "C1E001:P0016"
+      ],
+      "answer": {
+        "parts": [
+          {
+            "claim": "Arcanist Allura Vysoren asked Vox Machina to help find Lady Kima, and Allura and Kima were longtime friends.",
+            "status": "established",
+            "evidence_ids": [
+              "F001",
+              "C1E001:P0027"
+            ],
+            "support_quotes": [
+              "Matt says Arcanist Allura Vysoren asked the party to find Lady Kima of Vord. Allura and Kima were longtime friends.",
+              "Arcanist Allura Vysoren of the Tal'Dorei council came to them requesting their aid saying that a long time friend of hers, Lady Kima of Vord"
+            ]
+          }
+        ],
+        "retries": 0,
+        "invalid_citations": 0,
+        "input_tokens": 1440,
+        "output_tokens": 277
+      }
+    }
+  }
+]
