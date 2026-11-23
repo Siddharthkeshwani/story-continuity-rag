@@ -99,7 +99,12 @@ def generate(question, passages, campaign, cutoff, language):
             answer = Answer.model_validate_json(msg.content)
         except (ValidationError, TypeError):
             if attempt:
-                raise ValueError("The chat model returned an invalid answer format twice.")
+                message = {"Hindi":"इन अंशों से स्रोत सहित उत्तर की पुष्टि नहीं हो सकी।",
+                           "Hinglish":"In passages se cited jawaab verify nahi hua."}.get(
+                               language, "A cited answer could not be validated from these passages.")
+                return dict(parts=[dict(status="unresolved", claim=message, evidence_ids=[], support_quotes=[])],
+                            retries=attempt+network_retries, invalid_citations=1, **usage)
+            args["question"] += "\nReturn a JSON object with at least one part, even if the evidence is insufficient."
             continue
         invalid = [p for p in answer.parts if (p.status != "unresolved" and not p.evidence_ids)
                    or (p.status == "unresolved" and p.evidence_ids)
